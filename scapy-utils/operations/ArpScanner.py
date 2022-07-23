@@ -1,5 +1,5 @@
 from scapy.all import ARP, Ether, srp
-from exceptions.OperationErrorException import OperationErrorException
+#from exceptions.OperationErrorException import OperationErrorException
 
 class ArpScanner:
 
@@ -15,7 +15,8 @@ class ArpScanner:
             result = srp(packet, timeout = timeout)
             return result
         except Exception as ex:
-            raise OperationErrorException(f'Fatal error on send_arp_packet: {str(ex)}')
+            #raise OperationErrorException(f'Fatal error on send_arp_packet: {str(ex)}')
+            pass
 
     @staticmethod
     def get_clients(arp_result):
