@@ -22,8 +22,7 @@ class PortScanner:
 
     @staticmethod
     def udp_scan(dst_ip, dst_port, timeout, verbose = True):
-        status = None
-        udp_scan_resp = sr1(IP(dst=dst_ip)/UDP(dport=dst_port),timeout=timeout, verbose = True)
+        udp_scan_resp = sr1(IP(dst=dst_ip)/UDP(dport=dst_port),timeout=timeout, verbose = verbose)
         if (udp_scan_resp is None):
             return {'dst_ip': dst_ip, 'dst_port': dst_port, 'status': "Open|Filtered"}
 
@@ -58,10 +57,10 @@ class PortScanner:
                     udp_scan_list.append(udp_scan)
                     
                 except Exception as ex:
-                    print(f"{ip_addr}]:{port} - SCAN FAILED: {str(ex)}")
+                    print(f"{ip_addr}:{port} - SCAN FAILED: {str(ex)}")
                     break
 
-                print(f"[{ip_addr}]:{port} - SCAN SUCCESSFULLY")
+                print(f"{ip_addr}:{port} - SCAN SUCCESSFULLY")
                 ip_addr_report_list[ip_addr] = {"tcp_scan": tcp_scan_list, "udp_scan": udp_scan_list}
             
             print(f"[{ip_addr}] - SCAN FINISHED")
