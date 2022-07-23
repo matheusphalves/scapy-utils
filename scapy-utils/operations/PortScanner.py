@@ -68,6 +68,6 @@ class PortScanner:
         return ip_addr_report_list
 
 
-print(PortScanner.start_full_scan(['138.0.196.136'], [3389, 3306], verbose=False))
+print(PortScanner.start_full_scan(['127.0.0.1'], [3389, 3306], verbose=False))
 #3389
 #[20,21,23,25,53,80,110, 111,135,139,143,443,445,993,995,1723,3306,3389,5900,8080, 13335]
