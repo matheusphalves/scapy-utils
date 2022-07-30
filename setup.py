@@ -1,11 +1,17 @@
-from setuptools import find_packages, setup
+from setuptools import setup
+
+with open("README.md", 'r') as f:
+    long_description = f.read()
+
 setup(
-    name='scapy-utils',
-    packages=find_packages(include=['scapy']),
-    version='0.1.0',
-    description='Network Operations using Scapy Framework',
-    setup_requires=['pytest-runner'],
-    tests_require=['pytest==4.4.1'],
-    author='Matheus Phelipe',
-    license='MIT',
+   name='scapy4dummy',
+   version='1.0',
+   description='Networking operations using Scapy Framework',
+   license="MIT",
+   long_description=long_description,
+   author='Matheus Phelipe',
+   author_email='',
+   url="",
+   packages=['scpy4dummy'],
+   install_requires=['scapy']
 )
