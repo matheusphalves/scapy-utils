@@ -25,7 +25,7 @@ pip install -r requirements.txt
 
 ## Instaling scapy4dummy locally
 
-After clone the this repository, check the following examples
+After clone this repository, check the following examples
 
 > Running a ARP scan
 
