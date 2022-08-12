@@ -175,16 +175,23 @@ project/
 
 ### **ArpScanner**
 
-```send_arp_packet```
+```send_arp_packet```: Send a ARP request and returns all hosts responses.
 
-```get_clients```
+```get_clients```: Handle the host responses, getting their IP and MAC addresses.
 
-```start_scan```
+```start_scan```: Run a combined ARP request and retrives all clients.
 
 ### **PortScanner**
 
-```tcp_scan```
+```tcp_scan```: Performs a TCP scan. Basically, send a SYN flag. 
 
-```udp_scan```
+```udp_scan```: Performs an UDP scan.
 
-```start_full_scan```
+```start_full_scan```: Run a combined TCP + UDP scan.
+
+
+## **Utils**
+
+### **FileHandler**
+
+Class is responsable for store all data obtained from scans. 
