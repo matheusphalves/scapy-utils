@@ -12,7 +12,7 @@ class ArpScanner:
             arp = ARP(pdst = target_ip)
             ether = Ether(dst = ether_dst)
             packet = ether / arp
-            result = srp(packet, timeout = timeout)
+            result = srp(packet, timeout = timeout, verbose= False)
             return result
         except Exception as ex:
             raise OperationErrorException(f'Fatal error on send_arp_packet: {str(ex)}')
@@ -20,7 +20,9 @@ class ArpScanner:
     @staticmethod
     def get_clients(arp_result):
         clients = []
+        print ("{:<20} -> {:<20}".format('IP ADDRESS','MAC ADDRESS'))
         for sent, received in arp_result:
+            print ("{:<20} -> {:<20}".format(received.psrc, received.hwsrc))
             clients.append({
                 'ip_address': received.psrc,
                 'mac_address': received.hwsrc

@@ -51,17 +51,26 @@ class PortScanner:
                 try:
                     tcp_scan = PortScanner.tcp_scan(ip_addr, int(port), int(timeout), verbose=verbose)
                     udp_scan = PortScanner.udp_scan(ip_addr, int(port), int(timeout), verbose=verbose)
-                    tcp_scan.pop('dst_ip', None)
-                    udp_scan.pop('dst_ip', None)
+                    #tcp_scan.pop('dst_ip', None)
+                    #udp_scan.pop('dst_ip', None)
                     tcp_scan_list.append(tcp_scan)
                     udp_scan_list.append(udp_scan)
-                    
+                          
                 except Exception as ex:
                     print(f"{ip_addr}:{port} - SCAN FAILED: {str(ex)}")
                     break
-
                 print(f"{ip_addr}:{port} - SCAN SUCCESSFULLY")
                 ip_addr_report_list[ip_addr] = {"tcp_scan": tcp_scan_list, "udp_scan": udp_scan_list}
             
             print(f"[{ip_addr}] - SCAN FINISHED")
+        print ("{:<20} {:<20} {:<20} {:<20}".format('IP ADDRESS', 'SCAN TYPE', 'PORT', 'STATUS'))
+        for item in ip_addr_report_list:
+            item2 = ip_addr_report_list[item]['tcp_scan']
+            for tcp_scan in item2:
+                print ("{:<20} {:<20} {:<20} {:<20}".format(tcp_scan['dst_ip'], 'TCP SYN', tcp_scan['dst_port'],tcp_scan['status']))
+
+            item3 = ip_addr_report_list[item]['tcp_scan']
+            for udp_scan in item2:
+                print ("{:<20} {:<20} {:<20} {:<20}".format(udp_scan['dst_ip'], 'UDP', udp_scan['dst_port'],udp_scan['status']))
+
         return ip_addr_report_list
